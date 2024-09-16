@@ -8,9 +8,6 @@ dependencies:
   express:
     specifier: ^4.21.0
     version: 4.21.0
-  tslib:
-    specifier: ^2.3.0
-    version: 2.7.0
 
 devDependencies:
   '@nx/devkit':
@@ -8448,6 +8445,7 @@ packages:
 
   /tslib@2.7.0:
     resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
+    dev: true
 
   /tsscmp@1.0.6:
     resolution: {integrity: sha512-LxhtAkPDTkVCMQjt2h6eBVY28KCjikZqZfMcC15YBeNjkgUpdCfBu5HoiOTDu86v6smE8yOjyEktJ8hlbANHQA==}

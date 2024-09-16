@@ -52,8 +52,11 @@ export default defineConfig({
 
     reporters: ['default'],
     coverage: {
-      reportsDirectory: '../../coverage/apps/express-app',
       provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+      reportsDirectory: '../../coverage/apps/express-app',
+      include: ['src/**/*.ts'],
+      exclude: ['**/*.test.ts', '**/*.spec.ts'],
     }
   }
 });
