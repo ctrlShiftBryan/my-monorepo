@@ -1,5 +1,6 @@
 /// <reference types='vitest' />
 import { defineConfig } from 'vite';
+import { VitePluginNode } from 'vite-plugin-node';
 
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
@@ -18,12 +19,18 @@ export default defineConfig({
     host: 'localhost',
   },
 
-  plugins: [nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
-
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
+  plugins: [
+    nxViteTsPaths(),
+    nxCopyAssetsPlugin(['*.md']),
+    ...VitePluginNode({
+      adapter: 'express',
+      appPath: './src/server.ts',
+      exportName: 'viteNodeApp',
+      appName: 'express-app',
+      tsCompiler: 'swc',
+      swcOptions: {}
+    }),
+  ],
 
   build: {
     outDir: '../../dist/apps/express-app',
@@ -32,6 +39,9 @@ export default defineConfig({
     commonjsOptions: {
       transformMixedEsModules: true,
     },
+    target: 'esnext',
+    // Add this line to generate a single file
+    ssr: './src/server.ts',
   },
 
   test: {
@@ -44,6 +54,6 @@ export default defineConfig({
     coverage: {
       reportsDirectory: '../../coverage/apps/express-app',
       provider: 'v8',
-    },
-  },
+    }
+  }
 });

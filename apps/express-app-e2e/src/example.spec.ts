@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('/');
+test('server responds with correct message', async ({ page }) => {
+  await page.goto('http://localhost:4300');
 
-  // Expect h1 to contain a substring.
-  expect(await page.locator('h1').innerText()).toContain('Welcome');
+  // Expect the page content to contain the server's response
+  const pageContent = await page.textContent('body');
+  expect(pageContent).toBe('Hello from Express with Vite!');
 });
