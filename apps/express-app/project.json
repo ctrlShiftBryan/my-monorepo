@@ -1,15 +1,15 @@
 {
-  "name": "express-app",
+  "name": "fastify-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/express-app/src",
+  "sourceRoot": "apps/fastify-app/src",
   "tags": [],
-  "// targets": "to see all targets run: nx show project express-app --web",
+  "// targets": "to see all targets run: nx show project fastify-app --web",
   "targets": {
     "preview": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node dist/apps/express-app/server.mjs",
+        "command": "node dist/apps/fastify-app/server.mjs",
         "envFile": ".env.preview"
       }
     }

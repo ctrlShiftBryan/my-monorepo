@@ -5,5 +5,5 @@ test('server responds with correct message', async ({ page }) => {
 
   // Expect the page content to contain the server's response
   const pageContent = await page.textContent('body');
-  expect(pageContent).toBe('Hello from Express with Vite!');
+  expect(pageContent).toBe('Hello from Fastify with Vite!');
 });

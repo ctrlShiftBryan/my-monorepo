@@ -4,7 +4,7 @@ import { nxE2EPreset } from '@nx/playwright/preset';
 import { workspaceRoot } from '@nx/devkit';
 
 // For CI, you may want to set BASE_URL to the deployed application.
-const baseURL = process.env['BASE_URL'] || 'http://localhost:4300';
+const baseURL = process.env['BASE_URL'] || 'http://0.0.0.0:4300';
 
 /**
  * Read environment variables from file.
@@ -25,8 +25,8 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'pnpm exec nx run express-app:preview',
-    url: 'http://localhost:4300',
+    command: 'pnpm exec nx run fastify-app:preview',
+    url: 'http://0.0.0.0:4300',
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },

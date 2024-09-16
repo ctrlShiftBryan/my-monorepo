@@ -7,7 +7,7 @@ import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/apps/express-app',
+  cacheDir: '../../node_modules/.vite/apps/fastify-app',
 
   server: {
     port: 4200,
@@ -23,17 +23,17 @@ export default defineConfig({
     nxViteTsPaths(),
     nxCopyAssetsPlugin(['*.md']),
     ...VitePluginNode({
-      adapter: 'express',
+      adapter: 'fastify',
       appPath: './src/server.ts',
       exportName: 'viteNodeApp',
-      appName: 'express-app',
+      appName: 'fastify-app',
       tsCompiler: 'swc',
       swcOptions: {}
     }),
   ],
 
   build: {
-    outDir: '../../dist/apps/express-app',
+    outDir: '../../dist/apps/fastify-app',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {
@@ -54,7 +54,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
-      reportsDirectory: '../../coverage/apps/express-app',
+      reportsDirectory: '../../coverage/apps/fastify-app',
       include: ['src/**/*.ts'],
       exclude: ['**/*.test.ts', '**/*.spec.ts'],
     }
